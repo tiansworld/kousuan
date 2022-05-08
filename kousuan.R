@@ -45,8 +45,8 @@ play <- function(count = 10, num = 2, length = 1) {
         d <- rbind(d, data.frame("算式" = e, "结果" = as.numeric(a)))
 }
     t1 <- Sys.time()
-    s <- round(as.numeric(t1-t),1) 
-    s <- paste0("用时：",s, "秒", collapse="")
+    s <- round(as.numeric(difftime(t1,t, units = "secs")),1)
+    s <- paste0("用时：", s, "秒", collapse="")
 # statistics
     # how to transform character strings to equation and calculate it?
     return(list("结果" = d, "时间" = s))
