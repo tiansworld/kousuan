@@ -1,4 +1,4 @@
-## 口算练习
+## Arithmetic exercise for 1st grade student
 ## Copyright 2022   Tian Shixiong
 
 #' @length  生成数字的位数，1 为一位数, 2 为两位数
