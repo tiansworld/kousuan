@@ -28,8 +28,11 @@ draw_number <- function(length, size) {
 # equation
 equation <- function(num, length) {
     number <- draw_number(length = length, size = num)
-    symbol <- sample(x= c("+","-"), size = 1)
-    e <- paste0(number, sep = symbol, collapse="")
+    e <- paste0(sapply(number, 
+                       function(i) {
+                           paste0(i, sep = sample(c("+","-"), size=1))
+                       }),
+                collapse="")
     e <- strtrim(e, nchar(e)-1)
     e
 }
