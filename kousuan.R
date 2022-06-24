@@ -45,14 +45,19 @@ play <- function(count = 10, num = 2, length = 1) {
     for (i in 1:count) {
         e <- equation(num = num, length = length)
         a <- readline(paste0(e," = ?"))
-        d <- rbind(d, data.frame("算式" = e, "结果" = as.numeric(a)))
+        d <- rbind(d, 
+                   data.frame("算式" = e, 
+                              "结果" = as.numeric(a),
+                              "正确答案" = eval(parse(text=e))
+                              ))
 }
     t1 <- Sys.time()
     s <- round(as.numeric(difftime(t1,t, units = "secs")),1)
     s <- paste0("用时：", s, "秒", collapse="")
+    p <- paste0(mean(d[2] == d[3]) * 100, "%")
 # statistics
     # how to transform character strings to equation and calculate it?
-    return(list("结果" = d, "时间" = s))
+    return(list("结果" = d, "时间" = s, "正确率" = p))
 }
 
 
